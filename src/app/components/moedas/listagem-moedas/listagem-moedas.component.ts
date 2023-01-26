@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 import { MoedasService } from './../moedas.service';
 import { ListagemMoedas } from './listagem-moedas';
@@ -25,8 +26,11 @@ export class ListagemMoedasComponent implements OnInit, AfterViewInit{
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
+  @ViewChild(MatSort) sort!: MatSort;
   ngAfterViewInit(): void {
     this.listagem.paginator = this.paginator;
+    this.listagem.sort = this.sort;
   }
+
+
 }

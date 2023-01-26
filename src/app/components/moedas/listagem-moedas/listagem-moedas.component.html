@@ -5,15 +5,15 @@
     <div class="row">
       <div class="col mb-4">
 
-        <table mat-table [dataSource]="listagem" class="mat-elevation-z8">
+        <table mat-table matSort [dataSource]="listagem" class="mat-elevation-z8">
 
           <ng-container matColumnDef="code">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por sigla"> Sigla </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sigla </th>
             <td mat-cell *matCellDef="let moeda"> {{moeda.code}} </td>
           </ng-container>
 
           <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por descrição"> Descrição </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Descrição </th>
             <td mat-cell *matCellDef="let moeda"> {{moeda.description}} </td>
           </ng-container>
 

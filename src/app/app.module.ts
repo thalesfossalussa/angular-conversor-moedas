@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/listagem-moedas.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/lis
     BrowserAnimationsModule,
     MatTableModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
