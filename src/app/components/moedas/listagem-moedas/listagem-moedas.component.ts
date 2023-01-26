@@ -1,5 +1,8 @@
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+
 import { MoedasService } from './../moedas.service';
-import { Component, OnInit } from '@angular/core';
 import { ListagemMoedas } from './listagem-moedas';
 
 
@@ -8,17 +11,22 @@ import { ListagemMoedas } from './listagem-moedas';
   templateUrl: './listagem-moedas.component.html',
   styleUrls: ['./listagem-moedas.component.css']
 })
-export class ListagemMoedasComponent implements OnInit{
+export class ListagemMoedasComponent implements OnInit, AfterViewInit{
 
-  listagem: ListagemMoedas[] = [];
+  listagem = new MatTableDataSource<ListagemMoedas>([]);
   tableColumns: string[] = ['code', 'description'];
 
   constructor(private service: MoedasService) { }
 
   ngOnInit(): void {
     this.service.ultimaCotacao().subscribe((resultado) => {
-      this.listagem = Object.values(resultado.symbols);
+      this.listagem.data = Object.values(resultado.symbols);
     })
   }
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit(): void {
+    this.listagem.paginator = this.paginator;
+  }
 }
