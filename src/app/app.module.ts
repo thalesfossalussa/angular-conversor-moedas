@@ -3,15 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 
 import { HomeComponent } from './components/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
+
 import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/listagem-moedas.component';
-import { MatSortModule } from '@angular/material/sort';
+import { PesquisaMoedasComponent } from './components/moedas/pesquisa-moedas/pesquisa-moedas.component';
+import { TabelaMoedasComponent } from './components/moedas/tabela-moedas/tabela-moedas.component';
+
+import { FilterByDescriptionPipe } from './components/moedas/filter-by-description.pipe';
+import { FilterByCodePipe } from './components/moedas/filter-by-code.pipe';
+import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/conversao-moedas.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +27,12 @@ import { MatSortModule } from '@angular/material/sort';
     HomeComponent,
     MenuComponent,
     FooterComponent,
-    ListagemMoedasComponent
+    ListagemMoedasComponent,
+    PesquisaMoedasComponent,
+    FilterByDescriptionPipe,
+    FilterByCodePipe,
+    TabelaMoedasComponent,
+    ConversaoMoedasComponent,
   ],
   imports: [
     BrowserModule,
