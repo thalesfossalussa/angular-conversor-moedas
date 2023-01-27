@@ -12,11 +12,11 @@ export class MoedasService {
   private API: string = 'https://api.exchangerate.host/';
   constructor(private http: HttpClient) { }
 
-  listarMoedas(): Observable<ListagemMoedas> {
-    this.API = 'https://api.exchangerate.host/symbols';
-    return this.http.get<ListagemMoedas>(this.API + 'symbols');
+  listarMoedas(): Observable<any> {
+    return this.http.get<any>(this.API + 'symbols');
   }
 
+  // TODO: Tipar o retorno do Observable
   converter(from: string, to: string, quantidade?: number): Observable<any> {
     let converter = `${this.API}/convert?from=${from}&to=${to}`;
     if (quantidade) {
