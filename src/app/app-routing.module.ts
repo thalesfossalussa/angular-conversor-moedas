@@ -1,3 +1,4 @@
+import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/conversao-moedas.component';
 import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/listagem-moedas.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "listagem-moedas",
     component: ListagemMoedasComponent
+  },
+  {
+    path: "converter-moedas",
+    component: ConversaoMoedasComponent
   },
   {
     path: "**",
