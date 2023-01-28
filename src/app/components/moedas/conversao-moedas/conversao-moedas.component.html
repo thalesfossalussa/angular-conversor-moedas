@@ -5,6 +5,12 @@
     <form #frm="ngForm" (ngSubmit)="converter(frm)">
         <div class="row">
 
+          <div class="col-12" *ngIf="erro">
+            <div class="alert alert-danger" role="alert">
+              Favor adicionar as moedas que deseja realizar a conversão
+            </div>
+          </div>
+
         <div class="col-12 col-sm-4 mb-4 mx-auto">
 
           <h4 class="text-center">Moeda base</h4>
