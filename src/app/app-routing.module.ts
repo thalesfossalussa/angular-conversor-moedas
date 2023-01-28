@@ -1,3 +1,4 @@
+import { HistoricoMoedasComponent } from './components/moedas/historico-moedas/historico-moedas.component';
 import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/conversao-moedas.component';
 import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/listagem-moedas.component';
 import { HomeComponent } from './components/home/home.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: "converter-moedas",
     component: ConversaoMoedasComponent
+  },
+  {
+    path: "historico-moedas",
+    component: HistoricoMoedasComponent
   },
   {
     path: "**",

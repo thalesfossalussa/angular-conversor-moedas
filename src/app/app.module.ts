@@ -23,6 +23,7 @@ import { TabelaMoedasComponent } from './components/moedas/tabela-moedas/tabela-
 import { FilterByDescriptionPipe } from './components/moedas/filter-by-description.pipe';
 import { FilterByCodePipe } from './components/moedas/filter-by-code.pipe';
 import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/conversao-moedas.component';
+import { HistoricoMoedasComponent } from './components/moedas/historico-moedas/historico-moedas.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/c
     FilterByCodePipe,
     TabelaMoedasComponent,
     ConversaoMoedasComponent,
+    HistoricoMoedasComponent,
   ],
   imports: [
     BrowserModule,
