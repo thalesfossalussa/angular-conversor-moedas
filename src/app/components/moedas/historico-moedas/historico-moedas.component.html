@@ -1,1 +1,46 @@
-<p>historico-moedas works!</p>
+<div class="container">
+  <h2 class="text-center my-4">Histórico de conversões</h2>
+  <main>
+    <div class="row">
+      <div class="col mb-4">
+        <table mat-table matSort [dataSource]="historico" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="data">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
+            <td mat-cell *matCellDef="let conversao"> {{ conversao.data }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="hora">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Hora </th>
+            <td mat-cell *matCellDef="let conversao"> {{conversao.hora}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="entrada">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Entrada </th>
+            <td mat-cell *matCellDef="let conversao"> {{conversao.amount}} {{conversao.from}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="saida">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Saída </th>
+            <td mat-cell *matCellDef="let conversao"> {{conversao.result}} {{conversao.to}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="taxa">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Taxa de conversão </th>
+            <td mat-cell *matCellDef="let conversao"> {{conversao.rate}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Selecione a página de Conversões"
+        ></mat-paginator>
+
+      </div>
+    </div>
+  </main>
+</div>
