@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class MoedasService {
 
-  private API: string = 'https://api.exchangerate.host/';
+  private readonly API: string = 'https://api.exchangerate.host/';
   constructor(private http: HttpClient) { }
 
   listarMoedas(): Observable<any> {
@@ -18,7 +18,7 @@ export class MoedasService {
 
   // TODO: Tipar o retorno do Observable
   converter(from: string, to: string, quantidade?: number): Observable<any> {
-    let converter = `${this.API}/convert?from=${from}&to=${to}`;
+    let converter = `convert?from=${from}&to=${to}&places=2`;
     if (quantidade) {
       converter += `&amount=${quantidade}`;
     }
