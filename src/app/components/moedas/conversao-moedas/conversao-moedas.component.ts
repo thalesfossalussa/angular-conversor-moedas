@@ -18,6 +18,7 @@ export class ConversaoMoedasComponent implements OnInit {
   to!: string;
   amount!: number;
   erro: boolean = false;
+  private historico: ListagemMoedas[] | null = null;
 
   constructor(private service: MoedasService) { }
 
@@ -40,19 +41,29 @@ export class ConversaoMoedasComponent implements OnInit {
     this.erro = false;
     if (this.amount <= 0) this.amount = 1;
     if (this.from && this.to) {
-      return this.service.converter(this.from, this.to, this.amount).subscribe((conversao) => {
+      this.service.converter(this.from, this.to, this.amount).subscribe((conversao) => {
         this.moedaConvertida.from = conversao.query.from;
         this.moedaConvertida.to = conversao.query.to;
         this.moedaConvertida.amount = conversao.query.amount;
         this.moedaConvertida.rate = conversao.info.rate;
-        this.moedaConvertida.date = conversao.date;
+        this.moedaConvertida.date = new Date();
         this.moedaConvertida.result = conversao.result;
 
 
-        frm.form.reset();
+        this.addHistorico(this.moedaConvertida);
       })
+      frm.form.reset();
+
+      return this.erro = false
     }
 
     return this.erro = true
+  }
+
+  addHistorico(novaConversao: MoedaConvertida) {
+    const historico: MoedaConvertida[] = JSON.parse(sessionStorage.getItem("conversoes") || "[]");
+
+    historico.push(novaConversao);
+    sessionStorage.setItem('conversoes', JSON.stringify(historico));
   }
 }
