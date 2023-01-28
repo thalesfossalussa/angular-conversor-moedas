@@ -13,7 +13,7 @@ import { MoedaConvertida } from './../conversao-moedas/moeda-convertida';
 export class HistoricoMoedasComponent implements OnInit, AfterViewInit {
 
   historico = new MatTableDataSource<MoedaConvertida>([]);
-  tableColumns: string[] = ['data','hora','entrada','saida','taxa'];
+  tableColumns: string[] = ['data','hora','amount','result','rate'];
 
   ngOnInit(): void {
     this.historico.data = JSON.parse(sessionStorage.getItem('conversoes') || '[]' );
