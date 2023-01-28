@@ -5,7 +5,7 @@
     <form #frm="ngForm" (ngSubmit)="converter(frm)">
       <div class="row">
         <div class="col-12" *ngIf="erro">
-          <div class="alert alert-danger" role="alert">
+          <div class="alert alert-danger text-center" role="alert">
             Favor adicionar as moedas que deseja realizar a conversão
           </div>
         </div>
@@ -55,10 +55,13 @@
 
       <div class="row">
         <div class="col">
+
           <button
             type="submit"
-            class="btn btn-primary position-relative start-50 translate-middle my-2"
-          >
+            mat-raised-button
+            color="primary"
+            class="position-relative start-50 translate-middle my-2"
+            >
             Converter
           </button>
         </div>
@@ -67,9 +70,8 @@
 
     <div class="row align-items-center" *ngIf="moedaConvertida.from">
       <div class="col-12 col-sm-4 text-center">
-        <h4 class="mb-3">Cotação de {{ moedaConvertida.from }}</h4>
         <p class="fs-1">
-          <span class="fw-bold">$</span>{{ moedaConvertida.amount }}
+          <span class="fw-bold">{{ moedaConvertida.amount }}</span> {{ moedaConvertida.from }}
         </p>
       </div>
       <div class="col-12 col-sm-4 text-center">
@@ -78,9 +80,8 @@
         </p>
       </div>
       <div class="col-12 col-sm-4 text-center">
-        <h4 class="mb-3">Cotação de {{ moedaConvertida.to }}</h4>
         <p class="fs-1">
-          <span class="fw-bold">$</span>{{ moedaConvertida.result }}
+          <span class="fw-bold">{{ moedaConvertida.result }}</span> {{ moedaConvertida.to }}
         </p>
       </div>
     </div>
