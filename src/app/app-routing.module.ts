@@ -24,7 +24,7 @@ const routes: Routes = [
     component: ConversaoMoedasComponent
   },
   {
-    path: "historico-moedas",
+    path: "historico",
     component: HistoricoMoedasComponent
   },
   {
