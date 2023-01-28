@@ -3,52 +3,64 @@
   <p class="text-center">Selecione a moeda base e a moeda destino</p>
   <main>
     <form #frm="ngForm" (ngSubmit)="converter(frm)">
-        <div class="row">
-
-          <div class="col-12" *ngIf="erro">
-            <div class="alert alert-danger" role="alert">
-              Favor adicionar as moedas que deseja realizar a conversão
-            </div>
+      <div class="row">
+        <div class="col-12" *ngIf="erro">
+          <div class="alert alert-danger" role="alert">
+            Favor adicionar as moedas que deseja realizar a conversão
           </div>
-
-        <div class="col-12 col-sm-4 mb-4 mx-auto">
-
-          <h4 class="text-center">Moeda base</h4>
-
-            <select class="form-select form-select-lg" name="from" id="from" [(ngModel)]="from" required>
-              <option *ngFor="let moeda of listagem" value="{{ moeda.code }}">
-                {{ moeda.code }} | {{ moeda.description }}
-              </option>
-            </select>
-          </div>
-
-        <div class="col-12 col-sm-4 mb-4 mx-auto">
-
-          <h4 class="text-center">Moeda destino</h4>
-
-            <select class="form-select form-select-lg" name="to" id="to" [(ngModel)]="to" required>
-              <option *ngFor="let moeda of listagem" value="{{ moeda.code }}">
-                {{ moeda.code }} | {{ moeda.description }}
-              </option>
-            </select>
         </div>
 
+        <div class="col-12 col-sm-4 mb-4 mx-auto">
+
+          <mat-form-field class="w-100">
+            <mat-label>Moeda Base</mat-label>
+            <mat-select name="from" id="from" [(ngModel)]="from">
+              <mat-option *ngFor="let moeda of listagem" value="{{ moeda.code }}">
+                {{ moeda.code }} | {{ moeda.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-12 col-sm-4 mb-4 mx-auto">
+          <mat-form-field class="w-100">
+            <mat-label>Moeda Destino</mat-label>
+            <mat-select name="to" id="to" [(ngModel)]="to">
+              <mat-option
+                *ngFor="let moeda of listagem"
+                value="{{ moeda.code }}"
+              >
+                {{ moeda.code }} | {{ moeda.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
 
       <div class="row">
-
         <div class="col-12 col-sm-4 mb-4 mx-auto">
-
-          <h4 class="text-center">Valor a ser convertido</h4>
-
-          <input class="form-control" type="number" name="amount" id="amount" [(ngModel)]="amount">
+          <mat-form-field class="w-100">
+            <mat-label>Valor a ser convertido</mat-label>
+            <input
+              matInput
+              type="number"
+              name="amount"
+              id="amount"
+              [(ngModel)]="amount"
+            />
+          </mat-form-field>
         </div>
-
       </div>
 
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary position-relative start-50 translate-middle my-2">Converter</button>
+          <button
+            type="submit"
+            class="btn btn-primary position-relative start-50 translate-middle my-2"
+          >
+            Converter
+          </button>
         </div>
       </div>
     </form>
@@ -56,14 +68,20 @@
     <div class="row align-items-center" *ngIf="moedaConvertida.from">
       <div class="col-12 col-sm-4 text-center">
         <h4 class="mb-3">Cotação de {{ moedaConvertida.from }}</h4>
-        <p class="fs-1"><span class="fw-bold">$</span>{{ moedaConvertida.amount }}</p>
+        <p class="fs-1">
+          <span class="fw-bold">$</span>{{ moedaConvertida.amount }}
+        </p>
       </div>
       <div class="col-12 col-sm-4 text-center">
-        <p class="fs-3"><span class="fw-bold">x</span>{{ moedaConvertida.rate }}</p>
+        <p class="fs-3">
+          <span class="fw-bold">x</span>{{ moedaConvertida.rate }}
+        </p>
       </div>
       <div class="col-12 col-sm-4 text-center">
         <h4 class="mb-3">Cotação de {{ moedaConvertida.to }}</h4>
-        <p class="fs-1"><span class="fw-bold">$</span>{{ moedaConvertida.result }}</p>
+        <p class="fs-1">
+          <span class="fw-bold">$</span>{{ moedaConvertida.result }}
+        </p>
       </div>
     </div>
   </main>

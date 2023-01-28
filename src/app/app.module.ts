@@ -8,6 +8,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select';
 
 
 import { HomeComponent } from './components/home/home.component';
@@ -43,7 +45,9 @@ import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/c
     HttpClientModule,
     MatPaginatorModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
