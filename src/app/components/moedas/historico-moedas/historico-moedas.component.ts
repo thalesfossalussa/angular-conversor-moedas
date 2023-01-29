@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 
-import { MoedaConvertida } from './../conversao-moedas/moeda-convertida';
+import { MoedaConvertida } from '../moeda-convertida';
 
 @Component({
   selector: 'app-historico-moedas',

@@ -1,10 +1,11 @@
-import { Observable } from 'rxjs';
-import { MoedaConvertida } from './moeda-convertida';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { Conversao } from './../conversao';
+import { MoedaConvertida } from '../moeda-convertida';
 import { ListagemMoedas } from './../listagem-moedas/listagem-moedas';
 import { MoedasService } from './../moedas.service';
-import { Component, OnInit } from '@angular/core';
-import { Form, FormGroup, NgForm } from '@angular/forms';
-
+import { ConversorDataHora } from './../../../shared/utils/conversor-data-hora';
 @Component({
   selector: 'app-conversao-moedas',
   templateUrl: './conversao-moedas.component.html',
@@ -18,6 +19,7 @@ export class ConversaoMoedasComponent implements OnInit {
   to!: string;
   amount!: number;
   erro: boolean = false;
+  conversorDataHora = new ConversorDataHora;
 
   constructor(private service: MoedasService) { }
 
@@ -40,13 +42,13 @@ export class ConversaoMoedasComponent implements OnInit {
     this.erro = false;
     if (this.amount <= 0) this.amount = 1;
     if (this.from && this.to) {
-      this.service.converter(this.from, this.to, this.amount).subscribe((conversao) => {
+      this.service.converter(this.from, this.to, this.amount).subscribe((conversao: Conversao) => {
         this.moedaConvertida.from = conversao.query.from;
         this.moedaConvertida.to = conversao.query.to;
         this.moedaConvertida.amount = conversao.query.amount;
         this.moedaConvertida.rate = conversao.info.rate;
-        this.moedaConvertida.data = this.definirData(new Date());
-        this.moedaConvertida.hora = this.definirHora(new Date());
+        this.moedaConvertida.data = this.conversorDataHora.definirData(new Date());
+        this.moedaConvertida.hora = this.conversorDataHora.definirHora(new Date());
         this.moedaConvertida.result = conversao.result;
 
 
@@ -67,29 +69,4 @@ export class ConversaoMoedasComponent implements OnInit {
     sessionStorage.setItem('conversoes', JSON.stringify(historico));
   }
 
-  definirData(data: Date): string {
-    let dia: string;
-    let mes: string;
-
-    if(data.getDate() < 10) dia = `0${data.getDate()}`;
-    else dia = `${data.getDate()}`;
-
-    if((data.getMonth() + 1) < 10) mes = `0${(data.getMonth() + 1)}`;
-    else mes = `${data.getMonth()}`;
-
-    return `${dia}/${mes}/${data.getFullYear()}`;
-  }
-
-  definirHora(data: Date): string {
-    let horas: string;
-    let minutos: string;
-
-    if(data.getHours() < 10) horas = `0${data.getHours()}`;
-    else horas = `${data.getHours()}`;
-
-    if(data.getMinutes() < 10) minutos = `0${data.getMinutes()}`;
-    else minutos = `${data.getMinutes()}`;
-
-    return `${horas}:${minutos}`
-  }
 }
