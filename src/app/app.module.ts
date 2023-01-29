@@ -17,8 +17,6 @@ import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/listagem-moedas.component';
-import { PesquisaMoedasComponent } from './components/moedas/pesquisa-moedas/pesquisa-moedas.component';
-
 import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/conversao-moedas.component';
 import { HistoricoMoedasComponent } from './components/moedas/historico-moedas/historico-moedas.component';
 import { FilterPipe } from './components/moedas/listagem-moedas/filter.pipe';
@@ -30,7 +28,6 @@ import { FilterPipe } from './components/moedas/listagem-moedas/filter.pipe';
     MenuComponent,
     FooterComponent,
     ListagemMoedasComponent,
-    PesquisaMoedasComponent,
     ConversaoMoedasComponent,
     HistoricoMoedasComponent,
     FilterPipe,
