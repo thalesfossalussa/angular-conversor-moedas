@@ -3,16 +3,15 @@
   <p class="text-center">Aqui você pode ver as cotação de todas as moedas no mundo</p>
   <main>
     <div class="row">
-      <!-- TODO: A cotação deve ser pega pela API em tempo real -->
       <div class="col-12 col-sm-6 text-center">
-        <h4 class="mb-3">Cotação do Real (BRL)</h4>
+        <h4 class="mb-3">Cotação do Real em Dollar (1 BRL)</h4>
         <img src="../../../assets/flags/brasil.png" alt="Bandeira do Brasil" class="img-fluid w-25">
-        <p class="fs-1"><span class="fw-bold">$</span>0,19</p>
+        <p class="fs-1"><span class="fw-bold">$</span>{{ cotacaoDolar }}</p>
       </div>
       <div class="col-12 col-sm-6 text-center">
-        <h4 class="mb-3">Cotação do Dollar (USD)</h4>
+        <h4 class="mb-3">Cotação do Dollar em Real (1 USD)</h4>
         <img src="../../../assets/flags/united-states.png" alt="Bandeira do EUA" class="img-fluid w-25">
-        <p class="fs-1"><span class="fw-bold">R$</span>5,12</p>
+        <p class="fs-1"><span class="fw-bold">R$</span>{{ cotacaoReal }}</p>
       </div>
     </div>
   </main>
