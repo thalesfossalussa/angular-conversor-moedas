@@ -19,10 +19,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/listagem-moedas.component';
 import { PesquisaMoedasComponent } from './components/moedas/pesquisa-moedas/pesquisa-moedas.component';
 
-import { FilterByDescriptionPipe } from './components/moedas/filter-by-description.pipe';
-import { FilterByCodePipe } from './components/moedas/filter-by-code.pipe';
 import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/conversao-moedas.component';
 import { HistoricoMoedasComponent } from './components/moedas/historico-moedas/historico-moedas.component';
+import { FilterPipe } from './components/moedas/listagem-moedas/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,10 +31,9 @@ import { HistoricoMoedasComponent } from './components/moedas/historico-moedas/h
     FooterComponent,
     ListagemMoedasComponent,
     PesquisaMoedasComponent,
-    FilterByDescriptionPipe,
-    FilterByCodePipe,
     ConversaoMoedasComponent,
     HistoricoMoedasComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
