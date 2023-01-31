@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, Output, EventEmitter, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { Subject } from 'rxjs/internal/Subject';
+
 
 import { MoedasService } from './../moedas.service';
 import { ListagemMoedas } from './listagem-moedas';
@@ -10,11 +12,15 @@ import { ListagemMoedas } from './listagem-moedas';
   templateUrl: './listagem-moedas.component.html',
   styleUrls: ['./listagem-moedas.component.css']
 })
-export class ListagemMoedasComponent implements OnInit, AfterViewInit {
+export class ListagemMoedasComponent implements OnInit, AfterViewInit,OnDestroy {
+
+  @Output() onTyping = new EventEmitter<string>();
+  @Input() value: string = '';
+  debounce: Subject<string> = new Subject<string>();
 
   listagem = new MatTableDataSource<ListagemMoedas>([]);
   tableColumns: string[] = ['code', 'description'];
-  filter: string = '';
+  buscar: string = '';
 
   constructor(private service: MoedasService) { }
 
@@ -31,4 +37,12 @@ export class ListagemMoedasComponent implements OnInit, AfterViewInit {
     this.listagem.sort = this.sort;
   }
 
+  ngOnDestroy(): void {
+    this.debounce.unsubscribe();
+  }
+
+  filtrar(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.listagem.filter = filterValue.trim().toLowerCase();
+  }
 }
