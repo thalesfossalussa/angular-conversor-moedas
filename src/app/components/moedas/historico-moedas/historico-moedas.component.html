@@ -7,12 +7,12 @@
 
           <ng-container matColumnDef="data">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
-            <td mat-cell *matCellDef="let conversao"> {{ conversao.data }} </td>
+            <td mat-cell *matCellDef="let conversao"> {{ conversao.data | date: 'dd/MM/yyyy' }} </td>
           </ng-container>
 
           <ng-container matColumnDef="hora">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Hora </th>
-            <td mat-cell *matCellDef="let conversao"> {{conversao.hora}} </td>
+            <td mat-cell *matCellDef="let conversao"> {{conversao.data | date: 'HH:mm'}} </td>
           </ng-container>
 
           <ng-container matColumnDef="amount">

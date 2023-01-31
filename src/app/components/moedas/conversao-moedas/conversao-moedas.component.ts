@@ -5,7 +5,7 @@ import { Conversao } from './../conversao';
 import { MoedaConvertida } from '../moeda-convertida';
 import { ListagemMoedas } from './../listagem-moedas/listagem-moedas';
 import { MoedasService } from './../moedas.service';
-import { ConversorDataHora } from './../../../shared/utils/conversor-data-hora';
+
 @Component({
   selector: 'app-conversao-moedas',
   templateUrl: './conversao-moedas.component.html',
@@ -19,7 +19,6 @@ export class ConversaoMoedasComponent implements OnInit {
   to!: string;
   amount!: number;
   erro: boolean = false;
-  conversorDataHora = new ConversorDataHora;
 
   constructor(private service: MoedasService) { }
 
@@ -29,8 +28,7 @@ export class ConversaoMoedasComponent implements OnInit {
       to: '',
       amount: 0,
       rate: 0,
-      data: '',
-      hora: '',
+      data: new Date(),
       result: 0,
     }
     this.service.listarMoedas().subscribe((lista) => {
@@ -47,8 +45,7 @@ export class ConversaoMoedasComponent implements OnInit {
         this.moedaConvertida.to = conversao.query.to;
         this.moedaConvertida.amount = conversao.query.amount;
         this.moedaConvertida.rate = conversao.info.rate;
-        this.moedaConvertida.data = this.conversorDataHora.definirData(new Date());
-        this.moedaConvertida.hora = this.conversorDataHora.definirHora(new Date());
+        this.moedaConvertida.data = new Date();
         this.moedaConvertida.result = conversao.result;
 
 

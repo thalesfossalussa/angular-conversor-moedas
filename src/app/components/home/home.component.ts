@@ -1,7 +1,5 @@
-import { ConversorDataHora } from './../../shared/utils/conversor-data-hora';
 import { Component, OnInit } from '@angular/core';
 
-import { MoedaConvertida } from '../moedas/moeda-convertida';
 import { MoedasService } from './../moedas/moedas.service';
 import { Conversao } from '../moedas/conversao';
 
@@ -14,8 +12,6 @@ export class HomeComponent implements OnInit {
 
   cotacaoReal: number = 0;
   cotacaoDolar: number = 0;
-
-  private conversorDataHora = new ConversorDataHora;
 
   constructor(private service: MoedasService) { }
 

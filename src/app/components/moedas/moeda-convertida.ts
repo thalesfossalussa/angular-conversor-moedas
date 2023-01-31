@@ -3,7 +3,6 @@ export interface MoedaConvertida {
   to: string,
   amount: number
   rate: number
-  data: string,
-  hora: string,
+  data: Date,
   result: number
 }
