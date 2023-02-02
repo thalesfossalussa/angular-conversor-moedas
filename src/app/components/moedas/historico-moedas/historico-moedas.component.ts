@@ -19,6 +19,17 @@ export class HistoricoMoedasComponent implements OnInit, AfterViewInit {
   constructor(private service: MoedasService) { }
 
   ngOnInit(): void {
+    this.carregarDataSource();
+  }
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  ngAfterViewInit(): void {
+    this.historico.paginator = this.paginator;
+    this.historico.sort = this.sort;
+  }
+
+  carregarDataSource() {
     this.historico.data = JSON.parse(sessionStorage.getItem('conversoes') || '[]' );
 
     for(let i = 0; i < this.historico.data.length; i++){
@@ -29,14 +40,10 @@ export class HistoricoMoedasComponent implements OnInit, AfterViewInit {
       })
 
     }
-
   }
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  ngAfterViewInit(): void {
-    this.historico.paginator = this.paginator;
-    this.historico.sort = this.sort;
+  excluirHistorico(): void {
+    sessionStorage.clear();
+    this.carregarDataSource();
   }
-
 }

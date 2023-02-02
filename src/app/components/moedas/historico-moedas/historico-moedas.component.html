@@ -52,6 +52,42 @@
         ></mat-paginator>
 
       </div>
+
+      <div class="row">
+        <div class="col">
+
+          <button
+            type="submit"
+            mat-raised-button
+            color="warn"
+            class="position-relative start-50 translate-middle my-2"
+            data-bs-toggle="modal"
+            data-bs-target="#excluirHistoricoModal"
+            >
+            Excluir histórico
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal para confirmar exclusão -->
+      <div class="modal fade" id="excluirHistoricoModal" tabindex="-1" aria-labelledby="excluirHistoricoModal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" >Excluir Histórico</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Tem certeza que deseja apagar o histórico de conversões?
+            </div>
+            <div class="modal-footer">
+              <button mat-raised-button data-bs-dismiss="modal">Cancelar</button>
+              <button mat-raised-button color="warn" (click)="excluirHistorico()" data-bs-dismiss="modal">Excluir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </main>
 </div>
