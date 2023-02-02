@@ -1,3 +1,4 @@
+import { MoedasService } from './../moedas.service';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,8 +16,19 @@ export class HistoricoMoedasComponent implements OnInit, AfterViewInit {
   historico = new MatTableDataSource<MoedaConvertida>([]);
   tableColumns: string[] = ['data','hora','amount','result','rate'];
 
+  constructor(private service: MoedasService) { }
+
   ngOnInit(): void {
     this.historico.data = JSON.parse(sessionStorage.getItem('conversoes') || '[]' );
+
+    for(let i = 0; i < this.historico.data.length; i++){
+
+      this.service.valorHistorico(this.historico.data[i].from, this.historico.data[i].amount, this.historico.data[i].data).subscribe((valorHistorico) => {
+        if (valorHistorico.rates['USD'] >= 10000) this.historico.data[i].valorSuperior = true;
+        else this.historico.data[i].valorSuperior = false;
+      })
+
+    }
 
   }
 

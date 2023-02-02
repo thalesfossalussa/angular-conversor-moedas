@@ -14,7 +14,15 @@ import { MoedasService } from './../moedas.service';
 export class ConversaoMoedasComponent implements OnInit {
 
   listagem!: ListagemMoedas[];
-  moedaConvertida!: MoedaConvertida;
+  moedaConvertida: MoedaConvertida = {
+    from: '',
+    to: '',
+    amount: 0,
+    rate: null,
+    data: new Date(),
+    result: null,
+    valorSuperior: null
+  };
   from!: string;
   to!: string;
   amount!: number;
@@ -23,14 +31,6 @@ export class ConversaoMoedasComponent implements OnInit {
   constructor(private service: MoedasService) { }
 
   ngOnInit(): void {
-    this.moedaConvertida = {
-      from: '',
-      to: '',
-      amount: 0,
-      rate: 0,
-      data: new Date(),
-      result: 0,
-    }
     this.service.listarMoedas().subscribe((lista) => {
       this.listagem = Object.values(lista.symbols);
     })
@@ -38,7 +38,9 @@ export class ConversaoMoedasComponent implements OnInit {
 
   converter(frm: NgForm) {
     this.erro = false;
+
     if (this.amount <= 0) this.amount = 1;
+
     if (this.from && this.to) {
       this.service.converter(this.from, this.to, this.amount).subscribe((conversao: Conversao) => {
         this.moedaConvertida.from = conversao.query.from;
@@ -52,7 +54,6 @@ export class ConversaoMoedasComponent implements OnInit {
         this.addHistorico(this.moedaConvertida);
       })
       frm.form.reset();
-
       return this.erro = false
     }
 
