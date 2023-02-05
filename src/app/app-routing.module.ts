@@ -4,6 +4,7 @@ import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/lis
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './components/error/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -12,24 +13,24 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: "home",
+    path: 'home',
     component: HomeComponent,
   },
   {
-    path: "listagem-moedas",
+    path: 'listagem-moedas',
     component: ListagemMoedasComponent
   },
   {
-    path: "converter-moedas",
+    path: 'converter-moedas',
     component: ConversaoMoedasComponent
   },
   {
-    path: "historico",
+    path: 'historico',
     component: HistoricoMoedasComponent
   },
   {
-    path: "**",
-    redirectTo: "home"
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

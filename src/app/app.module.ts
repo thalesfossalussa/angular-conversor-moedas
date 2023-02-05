@@ -20,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/listagem-moedas.component';
 import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/conversao-moedas.component';
 import { HistoricoMoedasComponent } from './components/moedas/historico-moedas/historico-moedas.component';
+import { NotFoundComponent } from './components/error/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HistoricoMoedasComponent } from './components/moedas/historico-moedas/h
     ListagemMoedasComponent,
     ConversaoMoedasComponent,
     HistoricoMoedasComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
