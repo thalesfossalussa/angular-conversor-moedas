@@ -29,7 +29,7 @@ export class MoedasService {
 
     const anoString = `${data.getFullYear()}`;
 
-    const mes = data.getMonth();
+    const mes = data.getMonth() + 1;
     let mesString: string;
     if ((mes + 1) < 10) mesString = '0' + mes;
     else mesString = `${mes}`;
