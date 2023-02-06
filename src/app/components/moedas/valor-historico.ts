@@ -3,5 +3,7 @@ export interface ValorHistorico {
   historical: boolean;
   base:       string;
   date:       Date;
-  rates:      { [key: string]: number };
+  rates:      {
+    USD: number
+  };
 }

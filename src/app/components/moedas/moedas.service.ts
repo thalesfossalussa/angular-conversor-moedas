@@ -41,8 +41,7 @@ export class MoedasService {
 
     const dataString = `${anoString}-${mesString}-${diaString}`;
 
-    let historico = `${dataString}?base=${from}&amount=${amount}&places=2`;
-
+    let historico = `${dataString}?base=${from}&amount=${amount}&places=2&symbols=USD`;
     return this.http.get<ValorHistorico>(this.API + historico);
   }
 }
