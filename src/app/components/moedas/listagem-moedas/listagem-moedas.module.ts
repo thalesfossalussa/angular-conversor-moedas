@@ -12,8 +12,7 @@ import { ListagemMoedasComponent } from './listagem-moedas.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MoedasServiceModule,
-    BrowserAnimationsModule
+    MoedasServiceModule
   ],
   exports: [ListagemMoedasComponent],
   declarations: [ListagemMoedasComponent],

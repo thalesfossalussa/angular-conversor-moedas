@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConversaoMoedasModule } from './conversao-moedas.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +13,10 @@ describe('ConversaoMoedasComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ConversaoMoedasComponent ],
-      imports: [ ConversaoMoedasModule ]
+      imports: [
+        ConversaoMoedasModule,
+        BrowserAnimationsModule
+      ]
     })
     .compileComponents();
 

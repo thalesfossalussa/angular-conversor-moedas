@@ -19,8 +19,7 @@ import { MoedasServiceModule } from './../services/moedas.service.module';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    MoedasServiceModule,
-    BrowserAnimationsModule
+    MoedasServiceModule
   ],
   exports: [ConversaoMoedasComponent],
   declarations: [ConversaoMoedasComponent],

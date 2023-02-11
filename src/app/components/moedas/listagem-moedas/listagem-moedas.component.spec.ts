@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListagemMoedasModule } from './listagem-moedas.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -13,7 +14,10 @@ describe('ListagemMoedasComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ListagemMoedasComponent ],
-      imports: [ ListagemMoedasModule ]
+      imports: [
+        ListagemMoedasModule,
+        BrowserAnimationsModule
+      ]
     })
     .compileComponents();
 
