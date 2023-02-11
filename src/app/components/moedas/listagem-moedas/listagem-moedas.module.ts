@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MoedasServiceModule } from './../services/moedas.service.module';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -11,7 +12,8 @@ import { ListagemMoedasComponent } from './listagem-moedas.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MoedasServiceModule
+    MoedasServiceModule,
+    BrowserAnimationsModule
   ],
   exports: [ListagemMoedasComponent],
   declarations: [ListagemMoedasComponent],

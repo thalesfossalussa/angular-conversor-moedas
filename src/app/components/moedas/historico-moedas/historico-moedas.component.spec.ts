@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HistoricoMoedasModule } from './historico-moedas.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -10,7 +12,10 @@ describe('HistoricoMoedasComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ HistoricoMoedasComponent ],
-      imports: [ HttpClientModule ]
+      imports: [
+        HistoricoMoedasModule,
+        BrowserAnimationsModule
+      ]
     })
     .compileComponents();
 

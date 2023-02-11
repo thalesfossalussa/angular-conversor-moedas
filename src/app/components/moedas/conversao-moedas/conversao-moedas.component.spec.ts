@@ -1,3 +1,5 @@
+import { ConversaoMoedasModule } from './conversao-moedas.module';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -10,7 +12,7 @@ describe('ConversaoMoedasComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ConversaoMoedasComponent ],
-      imports: [ HttpClientModule ]
+      imports: [ ConversaoMoedasModule ]
     })
     .compileComponents();
 

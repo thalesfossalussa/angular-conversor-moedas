@@ -1,3 +1,6 @@
+import { ListagemMoedasModule } from './listagem-moedas.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -10,7 +13,7 @@ describe('ListagemMoedasComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ListagemMoedasComponent ],
-      imports: [ HttpClientModule ]
+      imports: [ ListagemMoedasModule ]
     })
     .compileComponents();
 

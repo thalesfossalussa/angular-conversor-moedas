@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,8 @@ import { MoedasServiceModule } from './../services/moedas.service.module';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    MoedasServiceModule
+    MoedasServiceModule,
+    BrowserAnimationsModule
   ],
   exports: [ConversaoMoedasComponent],
   declarations: [ConversaoMoedasComponent],
