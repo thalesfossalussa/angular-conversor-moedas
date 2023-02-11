@@ -1,10 +1,10 @@
-import { MoedasService } from './../moedas.service';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
-import { MoedaConvertida } from '../moeda-convertida';
+import { MoedasService } from './../services/moedas.service';
+import { MoedaConvertida } from './../interfaces/moeda-convertida';
 
 @Component({
   selector: 'app-historico-moedas',

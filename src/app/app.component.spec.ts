@@ -20,10 +20,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-conversor-moedas'`, () => {
+  it(`should have as title 'Conversor de moedas'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-conversor-moedas');
+    expect(app.title).toEqual('Conversor de moedas');
   });
 
   it('should render title', () => {

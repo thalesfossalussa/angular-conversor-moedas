@@ -1,51 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input'
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-
-import { HomeComponent } from './components/home/home.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { FooterComponent } from './components/footer/footer.component';
-
-import { ListagemMoedasComponent } from './components/moedas/listagem-moedas/listagem-moedas.component';
-import { ConversaoMoedasComponent } from './components/moedas/conversao-moedas/conversao-moedas.component';
-import { HistoricoMoedasComponent } from './components/moedas/historico-moedas/historico-moedas.component';
-import { NotFoundComponent } from './components/error/not-found/not-found.component';
+import { ViewModule } from './components/view/view.module';
+import { MoedasModule } from './components/moedas/moedas.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    MenuComponent,
-    FooterComponent,
-    ListagemMoedasComponent,
-    ConversaoMoedasComponent,
-    HistoricoMoedasComponent,
-    NotFoundComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatIconModule
+    ViewModule,
+    MoedasModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConversaoMoedasComponent } from './conversao-moedas.component';
@@ -8,7 +9,8 @@ describe('ConversaoMoedasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConversaoMoedasComponent ]
+      declarations: [ ConversaoMoedasComponent ],
+      imports: [ HttpClientModule ]
     })
     .compileComponents();
 

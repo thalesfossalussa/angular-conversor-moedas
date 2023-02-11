@@ -5,8 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { Subject } from 'rxjs/internal/Subject';
 
 
-import { MoedasService } from './../moedas.service';
-import { ListagemMoedas } from './listagem-moedas';
+import { MoedasService } from './../services/moedas.service';
+import { ListagemMoedas } from '../interfaces/listagem-moedas';
 @Component({
   selector: 'app-listagem-moedas',
   templateUrl: './listagem-moedas.component.html',

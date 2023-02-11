@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Conversao } from './../conversao';
-import { MoedaConvertida } from '../moeda-convertida';
-import { ListagemMoedas } from './../listagem-moedas/listagem-moedas';
-import { MoedasService } from './../moedas.service';
+import { Conversao } from '../interfaces/conversao';
+import { MoedaConvertida } from './../interfaces/moeda-convertida';
+import { ListagemMoedas } from '../interfaces/listagem-moedas';
+import { MoedasService } from './../services/moedas.service';
 
 @Component({
   selector: 'app-conversao-moedas',

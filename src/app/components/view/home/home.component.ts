@@ -1,7 +1,6 @@
+import { Conversao } from '../../moedas/interfaces/conversao';
+import { MoedasService } from './../../moedas/services/moedas.service';
 import { Component, OnInit } from '@angular/core';
-
-import { MoedasService } from './../moedas/moedas.service';
-import { Conversao } from '../moedas/conversao';
 
 @Component({
   selector: 'app-home',

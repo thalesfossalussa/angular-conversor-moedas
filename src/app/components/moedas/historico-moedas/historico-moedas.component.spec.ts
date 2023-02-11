@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HistoricoMoedasComponent } from './historico-moedas.component';
@@ -8,7 +9,8 @@ describe('HistoricoMoedasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HistoricoMoedasComponent ]
+      declarations: [ HistoricoMoedasComponent ],
+      imports: [ HttpClientModule ]
     })
     .compileComponents();
 

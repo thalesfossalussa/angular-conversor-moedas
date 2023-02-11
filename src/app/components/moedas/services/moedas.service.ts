@@ -1,5 +1,5 @@
-import { ValorHistorico } from './valor-historico';
-import { Conversao } from './conversao';
+import { ValorHistorico } from './../interfaces/valor-historico';
+import { Conversao } from '../interfaces/conversao';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,6 +12,7 @@ export class MoedasService {
   private readonly API: string = 'https://api.exchangerate.host/';
   constructor(private http: HttpClient) { }
 
+  // TODO: Tipar método
   listarMoedas(): Observable<any> {
     return this.http.get<any>(this.API + 'symbols');
   }
