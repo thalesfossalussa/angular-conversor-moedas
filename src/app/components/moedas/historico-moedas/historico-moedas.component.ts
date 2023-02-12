@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
 import { MoedasService } from './../services/moedas.service';
-import { MoedaConvertida } from './../interfaces/moeda-convertida';
+import { Conversao } from '../interfaces/Conversao';
 
 @Component({
   selector: 'app-historico-moedas',
@@ -13,7 +13,7 @@ import { MoedaConvertida } from './../interfaces/moeda-convertida';
 })
 export class HistoricoMoedasComponent implements OnInit, AfterViewInit {
 
-  historico = new MatTableDataSource<MoedaConvertida>([]);
+  historico = new MatTableDataSource<Conversao>([]);
   tableColumns: string[] = ['data','hora','amount','result','rate'];
 
   constructor(private service: MoedasService) { }

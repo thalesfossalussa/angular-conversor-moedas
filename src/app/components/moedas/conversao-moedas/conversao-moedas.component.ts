@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Conversao } from '../interfaces/conversao';
-import { MoedaConvertida } from './../interfaces/moeda-convertida';
+import { ConversaoRaw } from '../interfaces/conversao-raw';
+import { Conversao } from '../interfaces/Conversao';
 import { ListagemMoedas } from '../interfaces/listagem-moedas';
 import { MoedasService } from './../services/moedas.service';
 
@@ -14,7 +14,7 @@ import { MoedasService } from './../services/moedas.service';
 export class ConversaoMoedasComponent implements OnInit {
 
   listagem!: ListagemMoedas[];
-  moedaConvertida: MoedaConvertida = {
+  moedaConvertida: Conversao = {
     from: '',
     to: '',
     amount: 0,
@@ -42,7 +42,7 @@ export class ConversaoMoedasComponent implements OnInit {
     if (this.amount <= 0) this.amount = 1;
 
     if (this.from && this.to) {
-      this.service.converter(this.from, this.to, this.amount).subscribe((conversao: Conversao) => {
+      this.service.converter(this.from, this.to, this.amount).subscribe((conversao: ConversaoRaw) => {
         this.moedaConvertida.from = conversao.query.from;
         this.moedaConvertida.to = conversao.query.to;
         this.moedaConvertida.amount = conversao.query.amount;
@@ -60,8 +60,8 @@ export class ConversaoMoedasComponent implements OnInit {
     return this.erro = true
   }
 
-  addHistorico(novaConversao: MoedaConvertida) {
-    const historico: MoedaConvertida[] = JSON.parse(sessionStorage.getItem("conversoes") || "[]");
+  addHistorico(novaConversao: Conversao) {
+    const historico: Conversao[] = JSON.parse(sessionStorage.getItem("conversoes") || "[]");
 
     historico.push(novaConversao);
     sessionStorage.setItem('conversoes', JSON.stringify(historico));

@@ -1,5 +1,6 @@
+import { ListagemMoedasRaw } from './../interfaces/listagem-moedas-raw';
 import { ValorHistorico } from './../interfaces/valor-historico';
-import { Conversao } from '../interfaces/conversao';
+import { ConversaoRaw } from '../interfaces/conversao-raw';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,17 +13,16 @@ export class MoedasService {
   private readonly API: string = 'https://api.exchangerate.host/';
   constructor(private http: HttpClient) { }
 
-  // TODO: Tipar método
-  listarMoedas(): Observable<any> {
-    return this.http.get<any>(this.API + 'symbols');
+  listarMoedas(): Observable<ListagemMoedasRaw> {
+    return this.http.get<ListagemMoedasRaw>(this.API + 'symbols');
   }
 
-  converter(from: string, to: string, amount?: number): Observable<Conversao> {
+  converter(from: string, to: string, amount?: number): Observable<ConversaoRaw> {
     let converter = `convert?from=${from}&to=${to}&places=2`;
     if (amount) {
       converter += `&amount=${amount}`;
     }
-    return this.http.get<Conversao>(this.API + converter);
+    return this.http.get<ConversaoRaw>(this.API + converter);
   }
 
   valorHistorico(from: string, amount: number, dataRaw: Date): Observable<ValorHistorico> {

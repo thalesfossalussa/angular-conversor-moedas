@@ -1,8 +1,7 @@
-export interface Conversao {
-  motd: {
-    msg: string,
-    url: string
-  },
+import { MOTD } from './motd';
+
+export interface ConversaoRaw {
+  motd: MOTD
   success: boolean,
   query: {
       from: string,

@@ -1,4 +1,4 @@
-export interface MoedaConvertida {
+export interface Conversao {
   from: string,
   to: string,
   amount: number,
