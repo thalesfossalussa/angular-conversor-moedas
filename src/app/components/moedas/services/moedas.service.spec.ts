@@ -46,6 +46,22 @@ const mockConversao = {
   }
 }
 
+const mockValorHistorico = {
+  url: "https://api.exchangerate.host/2022-01-05?base=BRL&amount=10000&places=2&symbols=USD",
+  data: {
+    motd: {
+      msg: "If you or your company use this project or like what we doing, please consider backing us so we can continue maintaining and evolving this project.",
+      url: "https://exchangerate.host/#/donate"
+    },
+    success: true,
+    historical: true,
+    base: "BRL",
+    date: "2022-01-05",
+    rates: {
+      "USD": 1751.6
+    }
+  }
+}
 describe('MoedasService', () => {
   let service: MoedasService;
   let httpController: HttpTestingController;
@@ -79,6 +95,16 @@ describe('MoedasService', () => {
       done();
     });
     httpController.expectOne(mockConversao.url).flush(mockConversao.data);
+  });
+
+  afterEach(() => httpController.verify());
+  it('should return valorHistorico of 10000 BRL in USD', done => {
+    let data = new Date("2022-01-05T13:00:00");
+    service.valorHistorico("BRL", 10000, data).subscribe(valorHistorico => {
+      expect(valorHistorico.success).toBeTrue();
+      done();
+    });
+    httpController.expectOne(mockValorHistorico.url).flush(mockValorHistorico.data);
   });
 
 });
