@@ -29,16 +29,17 @@ export class HistoricoMoedasComponent implements OnInit, AfterViewInit {
     this.historico.sort = this.sort;
   }
 
-  carregarDataSource() {
+  carregarDataSource(): void {
     this.historico.data = JSON.parse(sessionStorage.getItem('conversoes') || '[]' );
+    this.verificarValorHistorico();
+  };
 
+  verificarValorHistorico(): void {
     for(let i = 0; i < this.historico.data.length; i++){
-
       this.service.valorHistorico(this.historico.data[i].from, this.historico.data[i].amount, this.historico.data[i].data).subscribe((valorHistorico) => {
         if (valorHistorico.rates.USD >= 10000) this.historico.data[i].valorSuperior = true;
         else this.historico.data[i].valorSuperior = false;
       })
-
     }
   }
 
