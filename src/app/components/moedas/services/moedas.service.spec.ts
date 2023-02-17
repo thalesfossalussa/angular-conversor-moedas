@@ -1,109 +1,14 @@
+import { Conversao } from './../interfaces/Conversao';
+import { MockedForTest } from './test/mocked-for-test';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { MoedasService } from './moedas.service';
 
-const mockListagem = {
-  url: "https://api.exchangerate.host/symbols",
-  data: {
-    motd: {
-      msg: "If you or your company use this project or like what we doing, please consider backing us so we can continue maintaining and evolving this project.",
-      url: "https://exchangerate.host/#/donate"
-    },
-    success: true,
-    symbols: {
-      AED: {
-          description: "United Arab Emirates Dirham",
-          code: "AED"
-      },
-      AFN: {
-          description: "Afghan Afghani",
-          code: "AFN"
-      },
-    }
-  }
-}
-
-const mockConversao = {
-  url: "https://api.exchangerate.host/convert?from=USD&to=BRL&places=2",
-  data: {
-    motd: {
-      msg: "If you or your company use this project or like what we doing, please consider backing us so we can continue maintaining and evolving this project.",
-      url: "https://exchangerate.host/#/donate"
-    },
-    success: true,
-    query: {
-      from: "USD",
-      to: "BRL",
-      amount: 1
-    },
-    info: {
-      rate: 5.214344
-    },
-    historical: false,
-    date: "2023-02-16",
-    result: 5.214344
-  }
-}
-
-const mockConversaoComQuantidade = {
-  url: "https://api.exchangerate.host/convert?from=USD&to=BRL&places=2&amount=500",
-  data: {
-    motd: {
-      msg: "If you or your company use this project or like what we doing, please consider backing us so we can continue maintaining and evolving this project.",
-      url: "https://exchangerate.host/#/donate"
-    },
-    success: true,
-    query: {
-        from: "USD",
-        to: "BRL",
-        amount: 500
-    },
-    info: {
-        rate: 5.214507
-    },
-    historical: false,
-    date: "2023-02-17",
-    result: 2607.253649
-  }
-}
-
-const mockValorHistorico = {
-  url: "https://api.exchangerate.host/2022-01-05?base=BRL&amount=10000&places=2&symbols=USD",
-  data: {
-    motd: {
-      msg: "If you or your company use this project or like what we doing, please consider backing us so we can continue maintaining and evolving this project.",
-      url: "https://exchangerate.host/#/donate"
-    },
-    success: true,
-    historical: true,
-    base: "BRL",
-    date: "2022-01-05",
-    rates: {
-      "USD": 1751.6
-    }
-  }
-}
-
-const mockValorHistoricoWithTwoPlacesDate = {
-  url: "https://api.exchangerate.host/2022-11-05?base=BRL&amount=10000&places=2&symbols=USD",
-  data: {
-    motd: {
-      msg: "If you or your company use this project or like what we doing, please consider backing us so we can continue maintaining and evolving this project.",
-      url: "https://exchangerate.host/#/donate"
-    },
-    success: true,
-    historical: true,
-    base: "BRL",
-    date: "2022-11-05",
-    rates: {
-      "USD": 1983.01
-    }
-  }
-}
 describe('MoedasService', () => {
   let service: MoedasService;
   let httpController: HttpTestingController;
+  let mock = new MockedForTest;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -124,7 +29,7 @@ describe('MoedasService', () => {
       expect(listagem.success).toBeTrue();
       done();
     });
-    httpController.expectOne(mockListagem.url).flush(mockListagem.data);
+    httpController.expectOne(mock.listagem.url).flush(mock.listagem.data);
   });
 
   afterEach(() => httpController.verify());
@@ -133,7 +38,7 @@ describe('MoedasService', () => {
       expect(conversao.success).toBeTrue();
       done();
     });
-    httpController.expectOne(mockConversao.url).flush(mockConversao.data);
+    httpController.expectOne(mock.conversao.url).flush(mock.conversao.data);
   });
 
   afterEach(() => httpController.verify());
@@ -142,7 +47,7 @@ describe('MoedasService', () => {
       expect(conversao.success).toBeTrue();
       done();
     });
-    httpController.expectOne(mockConversaoComQuantidade.url).flush(mockConversaoComQuantidade.data);
+    httpController.expectOne(mock.conversaoComQuantidade.url).flush(mock.conversaoComQuantidade.data);
   });
 
   afterEach(() => httpController.verify());
@@ -152,7 +57,7 @@ describe('MoedasService', () => {
       expect(valorHistorico.success).toBeTrue();
       done();
     });
-    httpController.expectOne(mockValorHistorico.url).flush(mockValorHistorico.data);
+    httpController.expectOne(mock.valorHistorico.url).flush(mock.valorHistorico.data);
   });
 
   afterEach(() => httpController.verify());
@@ -162,7 +67,7 @@ describe('MoedasService', () => {
       expect(valorHistorico.success).toBeTrue();
       done();
     });
-    httpController.expectOne(mockValorHistoricoWithTwoPlacesDate.url).flush(mockValorHistoricoWithTwoPlacesDate.data);
+    httpController.expectOne(mock.valorHistoricoWithTwoPlacesDate.url).flush(mock.valorHistoricoWithTwoPlacesDate.data);
   });
 
 });
