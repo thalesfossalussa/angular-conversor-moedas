@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, Output, EventEm
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { Subject } from 'rxjs/internal/Subject';
 
 
 import { MoedasService } from './../services/moedas.service';
@@ -12,15 +11,13 @@ import { ListagemMoedas } from '../interfaces/listagem-moedas';
   templateUrl: './listagem-moedas.component.html',
   styleUrls: ['./listagem-moedas.component.css']
 })
-export class ListagemMoedasComponent implements OnInit, AfterViewInit,OnDestroy {
+export class ListagemMoedasComponent implements OnInit, AfterViewInit {
 
   @Output() onTyping = new EventEmitter<string>();
   @Input() value: string = '';
-  debounce: Subject<string> = new Subject<string>();
 
   listagem = new MatTableDataSource<ListagemMoedas>([]);
   tableColumns: string[] = ['code', 'description'];
-  buscar: string = '';
 
   constructor(private service: MoedasService) { }
 
@@ -35,10 +32,6 @@ export class ListagemMoedasComponent implements OnInit, AfterViewInit,OnDestroy 
   ngAfterViewInit(): void {
     this.listagem.paginator = this.paginator;
     this.listagem.sort = this.sort;
-  }
-
-  ngOnDestroy(): void {
-    this.debounce.unsubscribe();
   }
 
   filtrar(event: Event) {

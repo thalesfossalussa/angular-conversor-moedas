@@ -1,15 +1,31 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListagemMoedasModule } from './listagem-moedas.module';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListagemMoedasComponent } from './listagem-moedas.component';
+import { filter } from 'rxjs';
 
 describe('ListagemMoedasComponent', () => {
   let component: ListagemMoedasComponent;
   let fixture: ComponentFixture<ListagemMoedasComponent>;
+  const mockListagem = [
+    {
+      description: "United Arab Emirates Dirham",
+      code: "AED"
+    },
+    {
+      description: "Afghan Afghani",
+      code: "AFN"
+    },
+    {
+      description: "Albanian Lek",
+      code: "ALL"
+    },
+    {
+      description: "Armenian Dram",
+      code: "AMD"
+    },
+  ]
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -29,4 +45,11 @@ describe('ListagemMoedasComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should load listagem', () => {
+    component.listagem.data = mockListagem;
+    fixture.detectChanges();
+    expect(component.listagem.data).toBeDefined();
+  });
+
 });
